@@ -29,9 +29,13 @@ for grant in acp.acl.grants:
 file_name='/tmp/data.gz'
 my_bucket = conn.lookup('artifacts')
 
+
 k=Key(bucket)
 k.key='testfile'
 k.set_contents_from_filename(file_name)
+
+#Get the file backc:wq
+k.get_contents_to_filename(str(k.key).replace('/', '_'))
 
 for i in my_bucket.list():
  print "beep: ",i
